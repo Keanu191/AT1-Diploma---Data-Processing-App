@@ -33,8 +33,8 @@
         <xctk:IntegerUpDown x:Name="mu1" Margin="114,41,627,340" AutomationProperties.Name="mu" Maximum="100" Increment="10" Minimum="10" />
         <Label Content="Sigma" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Mu" HorizontalAlignment="Left" Margin="114,10,0,0" VerticalAlignment="Top"/>
-        <Button Content="Load Sensor Data" HorizontalAlignment="Left" Margin="15,99,0,0" VerticalAlignment="Top" Height="25" Width="156"/>
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="22,129,636,10"/>
+        <Button x:Name="btnLoadAB" Content="Load Sensor Data" HorizontalAlignment="Left" Margin="15,99,0,0" VerticalAlignment="Top" Height="25" Width="156" Click="btnLoadAB_Click"/>
+        <ListBox x:Name="listBox1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="22,129,636,10"/>
         <Label Content="Binary Search Iterative" HorizontalAlignment="Left" Margin="198,55,0,0" VerticalAlignment="Top"/>
         <Button Content="Search" HorizontalAlignment="Left" Margin="198,84,0,0" VerticalAlignment="Top" Width="64"/>
         <Label Content="Binary Search Recursive" HorizontalAlignment="Left" Margin="191,148,0,0" VerticalAlignment="Top"/>
