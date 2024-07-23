@@ -8,8 +8,8 @@
         Background="#FFB7F9F9"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Label x:Name="Label_SensorA" Content="Sensor A" HorizontalAlignment="Left" Margin="197,-5,0,0" VerticalAlignment="Top" Height="79" Width="179" FontSize="36" RenderTransformOrigin="0.5,0.5">
+    <Grid Margin="0,0,0,13">
+        <Label x:Name="Label_SensorA1" Content="Sensor A" HorizontalAlignment="Left" Margin="197,-5,0,0" VerticalAlignment="Top" Height="79" Width="179" FontSize="36" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -19,7 +19,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label x:Name="Label_SensorA_Copy" Content="Sensor B" HorizontalAlignment="Left" Margin="517,-7,0,0" VerticalAlignment="Top" Height="79" Width="179" FontSize="36" RenderTransformOrigin="0.5,0.5">
+        <Label x:Name="Label_SensorA_Copy1" Content="Sensor B" HorizontalAlignment="Left" Margin="517,-7,0,0" VerticalAlignment="Top" Height="79" Width="179" FontSize="36" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -29,18 +29,72 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <xctk:IntegerUpDown x:Name="sigma" Margin="22,41,719,340" AutomationProperties.Name="sigma" Maximum="100" Increment="10" Minimum="10" />
-        <xctk:IntegerUpDown x:Name="mu" Margin="114,41,627,340" AutomationProperties.Name="mu" Maximum="100" Increment="10" Minimum="10" />
+        <xctk:IntegerUpDown x:Name="sigma1" Margin="22,41,719,340" AutomationProperties.Name="sigma" Maximum="100" Increment="10" Minimum="10" />
+        <xctk:IntegerUpDown x:Name="mu1" Margin="114,41,627,340" AutomationProperties.Name="mu" Maximum="100" Increment="10" Minimum="10" />
         <Label Content="Sigma" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Mu" HorizontalAlignment="Left" Margin="114,10,0,0" VerticalAlignment="Top"/>
         <Button Content="Load Sensor Data" HorizontalAlignment="Left" Margin="15,99,0,0" VerticalAlignment="Top" Height="25" Width="156"/>
         <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="22,129,636,10"/>
         <Label Content="Binary Search Iterative" HorizontalAlignment="Left" Margin="198,55,0,0" VerticalAlignment="Top"/>
         <Button Content="Search" HorizontalAlignment="Left" Margin="198,84,0,0" VerticalAlignment="Top" Width="64"/>
-        <Label Content="Binary Search Recursive" HorizontalAlignment="Left" Margin="198,159,0,0" VerticalAlignment="Top"/>
-        <Button Content="Search" HorizontalAlignment="Left" Margin="198,185,0,0" VerticalAlignment="Top" Width="64"/>
+        <Label Content="Binary Search Recursive" HorizontalAlignment="Left" Margin="191,148,0,0" VerticalAlignment="Top"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="198,179,0,0" VerticalAlignment="Top" Width="64"/>
         <TextBox HorizontalAlignment="Left" Margin="198,112,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="198,217,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="198,259,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="198,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120"/>
+        <Label Content="Search Target:" HorizontalAlignment="Left" Margin="191,226,0,0" VerticalAlignment="Top" Height="37" Width="88" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="1.637"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.471"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="337,57,358,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="606,49,79,16">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox HorizontalAlignment="Left" Margin="280,233,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="52"/>
+        <Label Content="Selection Sort                " HorizontalAlignment="Left" Margin="194,257,0,0" VerticalAlignment="Top"/>
+        <Button Content="Sort" HorizontalAlignment="Left" Margin="198,288,0,0" VerticalAlignment="Top" Width="79"/>
+        <TextBox HorizontalAlignment="Left" Margin="198,313,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsReadOnlyCaretVisible="True"/>
+        <Label Content="Binary Search Iterative" HorizontalAlignment="Left" Margin="460,57,0,0" VerticalAlignment="Top"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="460,84,0,0" VerticalAlignment="Top" Width="64"/>
+        <TextBox HorizontalAlignment="Left" Margin="460,112,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Inseration Sort
+               " HorizontalAlignment="Left" Margin="197,345,0,0" VerticalAlignment="Top"/>
+        <Button Content="Sort" HorizontalAlignment="Left" Margin="198,371,0,0" VerticalAlignment="Top" Width="79"/>
+        <TextBox HorizontalAlignment="Left" Margin="198,396,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsReadOnlyCaretVisible="True"/>
+        <Label Content="Binary Search Recursive" HorizontalAlignment="Left" Margin="457,148,0,0" VerticalAlignment="Top"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="460,174,0,0" VerticalAlignment="Top" Width="64"/>
+        <TextBox HorizontalAlignment="Left" Margin="457,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120"/>
+        <Label Content="Search Target:" HorizontalAlignment="Left" Margin="453,226,0,0" VerticalAlignment="Top" Height="37" Width="88" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="1.637"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.471"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox HorizontalAlignment="Left" Margin="539,234,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="52"/>
+        <Label Content="Selection Sort                " HorizontalAlignment="Left" Margin="449,265,0,0" VerticalAlignment="Top"/>
+        <Button Content="Sort" HorizontalAlignment="Left" Margin="457,291,0,0" VerticalAlignment="Top" Width="79"/>
+        <TextBox HorizontalAlignment="Left" Margin="457,322,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsReadOnlyCaretVisible="True"/>
+        <Label Content="Inseration Sort                " HorizontalAlignment="Left" Margin="447,345,0,0" VerticalAlignment="Top"/>
+        <Button Content="Sort" HorizontalAlignment="Left" Margin="457,371,0,0" VerticalAlignment="Top" Width="79"/>
+        <TextBox HorizontalAlignment="Left" Margin="457,396,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsReadOnlyCaretVisible="True"/>
     </Grid>
 </Window>
