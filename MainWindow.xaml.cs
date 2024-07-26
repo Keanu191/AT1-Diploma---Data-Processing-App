@@ -41,7 +41,7 @@ namespace AT1Dip
 
         public void LoadData()
         {
-            string galileoPath = "D:\\TAFE DIPLOMA\\Monday C# - Milan\\Projects\\AT1Dip\\Galileo6.dll";
+            string galileoPath = "Galileo6.dll";
 
             if (File.Exists(galileoPath))
             {
@@ -49,12 +49,12 @@ namespace AT1Dip
                 {
                     foreach (double data in sensorA)
                     {
-                        sensorA.AddFirst(400); // Sensor A linked listsize 400
+                        sensorA.AddFirst(400); // set Sensor A linked list size to 400
                     }
                     
                     foreach (double data in sensorB)
                     {
-                        sensorB.AddFirst(400); //Sensor B linked listsize 400
+                        sensorB.AddFirst(400); // set Sensor B linked list size to 400
                     } 
                 }
             }
@@ -68,6 +68,20 @@ namespace AT1Dip
         private void btnLoadAB_Click(object sender, RoutedEventArgs e)
         {
             LoadData(); // call load data method
+            ShowAllSensorData();
+        }
+
+        /*
+         * 4.3 Create a custom method called "ShowAllSensorData" which will display both
+         * linkedLists in a ListView. Add column titles "Sensor A" and "Sensor B" to the ListView.
+         * The input parameters are empty, and the return type is void.
+         */
+        private void ShowAllSensorData()
+        {
+            if (listView1 != null)
+            {
+               
+            }
         }
     }
 }
