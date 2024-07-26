@@ -49,9 +49,13 @@ namespace AT1Dip
                 {
                     foreach (double data in sensorA)
                     {
-                        
-                        
+                        sensorA.AddFirst(400); // Sensor A linked listsize 400
                     }
+                    
+                    foreach (double data in sensorB)
+                    {
+                        sensorB.AddFirst(400); //Sensor B linked listsize 400
+                    } 
                 }
             }
             else
