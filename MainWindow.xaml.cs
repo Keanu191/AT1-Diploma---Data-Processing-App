@@ -68,7 +68,6 @@ namespace AT1Dip
         private void btnLoadAB_Click(object sender, RoutedEventArgs e)
         {
             LoadData(); // call load data method
-            ShowAllSensorData();
         }
 
         /*
@@ -78,9 +77,18 @@ namespace AT1Dip
          */
         private void ShowAllSensorData()
         {
-            if (listView1 != null)
+            listView1.Items.Clear(); // clear items in the listview
+
+            // display linked list for sensor A
+            foreach (double data in sensorA)
             {
-               
+                listView1.Items.Add(data);
+            }
+
+            // display linked list for sensor B
+            foreach (double data in sensorB)
+            {
+                listView1.Items.Add(data);
             }
         }
     }
