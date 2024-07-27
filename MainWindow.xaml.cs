@@ -65,10 +65,6 @@ namespace AT1Dip
             
         }
 
-        private void btnLoadAB_Click(object sender, RoutedEventArgs e)
-        {
-            LoadData(); // call load data method
-        }
 
         /*
          * 4.3 Create a custom method called "ShowAllSensorData" which will display both
@@ -77,6 +73,7 @@ namespace AT1Dip
          */
         private void ShowAllSensorData()
         {
+            
             listView1.Items.Clear(); // clear items in the listview
 
             // display linked list for sensor A
@@ -90,6 +87,16 @@ namespace AT1Dip
             {
                 listView1.Items.Add(data);
             }
+        }
+
+        /*
+         *  4.4 Create a button and associated click method that will call the LoadData and ShowAllSensorData methods.
+         *  The input parameters are empty, and the return type is void. 
+         */
+        private void btnLoadAB_Click(object sender, RoutedEventArgs e)
+        {
+            LoadData(); // call load data method
+            ShowAllSensorData(); // call show all sensor method
         }
     }
 }
