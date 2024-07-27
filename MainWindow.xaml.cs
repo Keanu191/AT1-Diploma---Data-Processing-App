@@ -73,7 +73,6 @@ namespace AT1Dip
          */
         private void ShowAllSensorData()
         {
-            
             listView1.Items.Clear(); // clear items in the listview
 
             // display linked list for sensor A
@@ -98,5 +97,46 @@ namespace AT1Dip
             LoadData(); // call load data method
             ShowAllSensorData(); // call show all sensor method
         }
+
+
+        /*
+         * 4.5 Create a method called “NumberOfNodes” that will return an integer which is the number of nodes(elements) in a LinkedList.
+         * The method signature will have an input parameter of type LinkedList, and the calling code argument is the linkedlist name. 
+         */
+        private int NumberOfNodes()
+        {
+            return sensorA.Count;
+            return sensorB.Count; // why is this unreachable :<(
+
+            /*
+             * **** ORIGINAL ACTIVITY 2 METHOD ****
+             * // method to display the linked list in the list box
+        private void showLinkedList()
+        {
+            // clear input boxes and list box
+            listBox1.Items.Clear();
+            textBoxCarName.Clear();
+            textBoxNodePosition.Clear();
+            // display number of list nodes
+            textBoxNumOfNodes.Text = numberOfNodes().ToString(); 
+            // display linked list
+            foreach (string car in myCarCollection)
+            {
+                listBox1.Items.Add(car);
+            }
+        }
+             */
+        }
+
+        /*
+         * 4.6 Create a method called “DisplayListboxData” that will display the content of a LinkedList inside the appropriate ListBox.
+         * The method signature will have two input parameters; a LinkedList, and the ListBox name. 
+         * The calling code argument is the linkedlist name and the listbox name. 
+         */
+        private void DisplayListBoxData()
+        {
+
+        }
+
     }
 }

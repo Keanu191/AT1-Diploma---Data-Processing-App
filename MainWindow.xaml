@@ -95,7 +95,7 @@
         <Label Content="Inseration Sort                " HorizontalAlignment="Left" Margin="447,74,0,0" VerticalAlignment="Top" Grid.Row="2"/>
         <Button Content="Sort" HorizontalAlignment="Left" Margin="457,100,0,0" VerticalAlignment="Top" Width="79" Grid.Row="2"/>
         <TextBox HorizontalAlignment="Left" Margin="457,125,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsReadOnlyCaretVisible="True" Grid.Row="2"/>
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="337,61,358,10" Grid.RowSpan="3"/>
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="596,61,87,10" Grid.RowSpan="3"/>
+        <ListBox x:Name="listBoxA" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="337,61,358,10" Grid.RowSpan="3"/>
+        <ListBox x:Name="listBoxB" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="596,61,87,10" Grid.RowSpan="3"/>
     </Grid>
 </Window>
