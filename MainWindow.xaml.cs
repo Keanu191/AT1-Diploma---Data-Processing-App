@@ -51,6 +51,7 @@ namespace AT1Dip
 
             for (int i = 0; i < total; i++)
             {
+               
                 sensorA.AddFirst(read.SensorA(double.Parse(mu1.Text), double.Parse(sigma1.Text))); // Convert text to double for sigma and mu
                 sensorB.AddFirst(read.SensorB(double.Parse(mu1.Text), double.Parse(sigma1.Text)));
             }
@@ -117,5 +118,14 @@ namespace AT1Dip
             }
         }
 
+        /*
+         * 4.7 Create a method called “SelectionSort” which has a single input parameter of type LinkedList, while the calling code argument is the linkedlist name.
+         * The method code must follow the pseudo code supplied below in the Appendix. 
+         * The return type is Boolean. 
+         */
+        private void SelectionSort()
+        {
+
+        }
     }
 }
