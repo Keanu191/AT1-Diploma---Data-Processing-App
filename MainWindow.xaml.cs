@@ -87,6 +87,7 @@ namespace AT1Dip
         {
             LoadData(); // call load data method
             ShowAllSensorData(); // call show all sensor method
+            DisplayListBoxData(listBoxIdentifier: sensorA, listBox: listBoxA); // call Display List Box Data method
         }
 
 
@@ -104,9 +105,16 @@ namespace AT1Dip
          * The method signature will have two input parameters; a LinkedList, and the ListBox name. 
          * The calling code argument is the linkedlist name and the listbox name. 
          */
-        private void DisplayListBoxData()
+        private void DisplayListBoxData(LinkedList<double> listBoxIdentifier, ListBox listBox)
         {
+            listBoxA.Items.Clear();
+            listBoxB.Items.Clear();
 
+            foreach (double data in listBoxIdentifier)
+            {
+                listBoxA.Items.Add(data);
+                listBoxB.Items.Add(data);
+            }
         }
 
     }
