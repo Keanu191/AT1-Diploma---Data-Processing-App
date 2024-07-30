@@ -10,6 +10,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.Generic; // import (4.1)
 using System.IO;
+using Galileo6; // import the galileo library (4.2)
+using System.Runtime.InteropServices;
 
 namespace AT1Dip
 {
@@ -39,30 +41,19 @@ namespace AT1Dip
          * inside the method and must be equal to 400. The input parameters are empty, and the return type is void.
          */
 
-        public void LoadData()
+        private void LoadData()
         {
-            string galileoPath = "Galileo6.dll";
+            // declare an instance of the galileo library
+            ReadData read = new ReadData();
 
-            if (File.Exists(galileoPath))
+            // putting the total into a const int as its more efficient than writing it in the for loop
+            const int total = 400; // 400 is the max that is required
+
+            for (int i = 0; i < total; i++)
             {
-                using (var stream = File.Open(galileoPath, FileMode.Open))
-                {
-                    foreach (double data in sensorA)
-                    {
-                        sensorA.AddFirst(400); // set Sensor A linked list size to 400
-                    }
-                    
-                    foreach (double data in sensorB)
-                    {
-                        sensorB.AddFirst(400); // set Sensor B linked list size to 400
-                    } 
-                }
+                sensorA.AddFirst(read.SensorA(double.Parse(mu1.Text), double.Parse(sigma1.Text))); // Convert text to double for sigma and mu
+                sensorB.AddFirst(read.SensorB(double.Parse(mu1.Text), double.Parse(sigma1.Text)));
             }
-            else
-            {
-                MessageBox.Show("ERROR: Cannot find the DLL file!");
-            }
-            
         }
 
 
@@ -103,29 +94,9 @@ namespace AT1Dip
          * 4.5 Create a method called “NumberOfNodes” that will return an integer which is the number of nodes(elements) in a LinkedList.
          * The method signature will have an input parameter of type LinkedList, and the calling code argument is the linkedlist name. 
          */
-        private int NumberOfNodes()
+        private int NumberOfNodes(LinkedList<int> nodes)
         {
-            return sensorA.Count;
-            return sensorB.Count; // why is this unreachable :<(
-
-            /*
-             * **** ORIGINAL ACTIVITY 2 METHOD ****
-             * // method to display the linked list in the list box
-        private void showLinkedList()
-        {
-            // clear input boxes and list box
-            listBox1.Items.Clear();
-            textBoxCarName.Clear();
-            textBoxNodePosition.Clear();
-            // display number of list nodes
-            textBoxNumOfNodes.Text = numberOfNodes().ToString(); 
-            // display linked list
-            foreach (string car in myCarCollection)
-            {
-                listBox1.Items.Add(car);
-            }
-        }
-             */
+            return nodes.Count;
         }
 
         /*
