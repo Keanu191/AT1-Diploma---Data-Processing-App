@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:AT1Dip"
         Background="#FFB7F9F9"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="469" Width="800">
     <Grid Margin="0,0,0,13">
         <Grid.RowDefinitions>
             <RowDefinition Height="270*"/>
@@ -55,7 +55,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <ListView x:Name="listView1" Margin="15,127,629,0" Grid.RowSpan="3" d:ItemsSource="{d:SampleData ItemCount=5}">
+        <ListView x:Name="listView1" Margin="15,127,627,0" Grid.RowSpan="3" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Sensor A" DisplayMemberBinding="{Binding sigma}" Width="70" />
@@ -90,7 +90,7 @@
         </Label>
         <TextBox HorizontalAlignment="Left" Margin="539,234,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="52"/>
         <Label Content="Selection Sort                " HorizontalAlignment="Left" Margin="449,265,0,0" VerticalAlignment="Top" Grid.RowSpan="3"/>
-        <Button Content="Sort" HorizontalAlignment="Left" Margin="457,20,0,0" VerticalAlignment="Top" Width="79" Grid.Row="2"/>
+        <Button Content="Sort" HorizontalAlignment="Left" Margin="457,20,0,0" VerticalAlignment="Top" Width="79" Grid.Row="2" Click="Button_Click"/>
         <TextBox HorizontalAlignment="Left" Margin="457,51,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsReadOnlyCaretVisible="True" Grid.Row="2"/>
         <Label Content="Inseration Sort                " HorizontalAlignment="Left" Margin="447,74,0,0" VerticalAlignment="Top" Grid.Row="2"/>
         <Button Content="Sort" HorizontalAlignment="Left" Margin="457,100,0,0" VerticalAlignment="Top" Width="79" Grid.Row="2"/>

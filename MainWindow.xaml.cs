@@ -12,6 +12,7 @@ using System.Collections.Generic; // import (4.1)
 using System.IO;
 using Galileo6; // import the galileo library (4.2)
 using System.Runtime.InteropServices;
+using System.Numerics;
 
 namespace AT1Dip
 {
@@ -51,7 +52,6 @@ namespace AT1Dip
 
             for (int i = 0; i < total; i++)
             {
-               
                 sensorA.AddFirst(read.SensorA(double.Parse(mu1.Text), double.Parse(sigma1.Text))); // Convert text to double for sigma and mu
                 sensorB.AddFirst(read.SensorB(double.Parse(mu1.Text), double.Parse(sigma1.Text)));
             }
@@ -96,7 +96,7 @@ namespace AT1Dip
          * 4.5 Create a method called “NumberOfNodes” that will return an integer which is the number of nodes(elements) in a LinkedList.
          * The method signature will have an input parameter of type LinkedList, and the calling code argument is the linkedlist name. 
          */
-        private int NumberOfNodes(LinkedList<int> nodes)
+        private int NumberOfNodes(LinkedList<double> nodes)
         {
             return nodes.Count;
         }
@@ -123,9 +123,105 @@ namespace AT1Dip
          * The method code must follow the pseudo code supplied below in the Appendix. 
          * The return type is Boolean. 
          */
-        private void SelectionSort()
+        private bool SelectionSort(LinkedList<double> list)
+        {
+            int min = 0;
+            int max = NumberOfNodes(list);
+
+            for (int i = 0; i < max -1; i++)
+            {
+                min = i;
+                for (int j = i + 1; j < max; j++)
+                {
+                    if (list.ElementAt(j) < list.ElementAt(min))
+                    {
+                        min = j;
+                    }   
+                }
+                LinkedListNode<double> currentMin = list.Find(list.ElementAt(min));
+                LinkedListNode<double> currentI = list.Find(list.ElementAt(i));
+
+                var temp = currentMin.Value;
+                currentMin.Value = currentI.Value;
+                currentI.Value = temp;
+            }
+            return true;
+
+            /*
+             * integer min => 0 
+
+               integer max => numberOfNodes(list) 
+
+               for ( i = 0 to max - 1 ) 
+
+               min => i 
+
+               for ( j = i + 1 to max ) 
+
+               if (list element(j) < list element(min)) 
+
+               min => j 
+
+               END for 
+
+               // Supplied C# code 
+
+               LinkedListNode<double> currentMin = list.Find(list.ElementAt(min)) 
+
+               LinkedListNode<double> currentI = list.Find(list.ElementAt(i)) 
+
+               // End of supplied C# code 
+
+               var temp = currentMin.Value 
+
+               currentMin.Value = currentI.Value 
+
+               currentI.Value = temp 
+
+               END for 
+             */
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SelectionSort(list: sensorA); // call selectionSort method
+            DisplayListBoxData(listBoxIdentifier: sensorA, listBox: listBoxA); // call Display List Box Data method
+        }
+
+        /*
+         * Create a method called "InsertionSort" which has a single parameter of type LinkedList,
+         * while the calling code argument is the linkedlist name. The method code must follow the psuedo code
+         * supplied below in the Appendix. The return type is Boolean.
+         */
+        private void InsertionSort()
         {
 
+
+            /*
+             * integer max = numberOfNodes(list) 
+
+                for ( i = 0 to max – 1 ) 
+
+                for ( j = i + 1 to j > 0, j-- ) 
+
+                if (list element(j - 1) > list element(j)) 
+
+                // Supplied C# code 
+
+                LinkedListNode<double> current = list.Find(list.ElementAt(j)) 
+
+                // End of supplied C# code 
+
+                // Add Swap code here by swapping 
+
+                // previous value with current value. 
+
+                END if 
+
+                END for 
+
+                END for 
+             */
         }
     }
 }
