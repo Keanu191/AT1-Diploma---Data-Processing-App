@@ -189,13 +189,28 @@ namespace AT1Dip
         }
 
         /*
-         * Create a method called "InsertionSort" which has a single parameter of type LinkedList,
+         * 4.8 Create a method called "InsertionSort" which has a single parameter of type LinkedList,
          * while the calling code argument is the linkedlist name. The method code must follow the psuedo code
          * supplied below in the Appendix. The return type is Boolean.
          */
-        private void InsertionSort()
+        private bool InsertionSort(LinkedList<double> list)
         {
-
+            int max = NumberOfNodes(list);
+            for (int i = 0; i < max -1; i++)
+            {
+                for (int j = i + 1; j < max; j--)
+                {
+                    if (list.ElementAt(j - 1) > list.ElementAt(j))
+                    {
+                        // swap code
+                      LinkedListNode<double> current = list.Find(list.ElementAt(j));
+                      var temp = list.Find(list.ElementAt(j));
+                      current.Value = list.ElementAt(j);
+                      current.Value = temp;
+                    }
+                }
+            }
+            return true; // return type boolean
 
             /*
              * integer max = numberOfNodes(list) 
@@ -222,6 +237,12 @@ namespace AT1Dip
 
                 END for 
              */
+        }
+
+        private void btnInserationSort_Click(object sender, RoutedEventArgs e)
+        {
+            InsertionSort(list: sensorA);
+            DisplayListBoxData(listBoxIdentifier: sensorA, listBox: listBoxA); // call Display List Box Data method
         }
     }
 }

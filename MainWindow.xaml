@@ -90,10 +90,10 @@
         </Label>
         <TextBox HorizontalAlignment="Left" Margin="539,234,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="52"/>
         <Label Content="Selection Sort                " HorizontalAlignment="Left" Margin="449,265,0,0" VerticalAlignment="Top" Grid.RowSpan="3"/>
-        <Button Content="Sort" HorizontalAlignment="Left" Margin="457,20,0,0" VerticalAlignment="Top" Width="79" Grid.Row="2" Click="Button_Click"/>
+        <Button x:Name="btnSelectionSort" Content="Sort" HorizontalAlignment="Left" Margin="457,20,0,0" VerticalAlignment="Top" Width="79" Grid.Row="2" Click="Button_Click"/>
         <TextBox HorizontalAlignment="Left" Margin="457,51,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsReadOnlyCaretVisible="True" Grid.Row="2"/>
         <Label Content="Inseration Sort                " HorizontalAlignment="Left" Margin="447,74,0,0" VerticalAlignment="Top" Grid.Row="2"/>
-        <Button Content="Sort" HorizontalAlignment="Left" Margin="457,100,0,0" VerticalAlignment="Top" Width="79" Grid.Row="2"/>
+        <Button x:Name="btnInserationSort" Content="Sort" HorizontalAlignment="Left" Margin="457,100,0,0" VerticalAlignment="Top" Width="79" Grid.Row="2" Click="btnInserationSort_Click"/>
         <TextBox HorizontalAlignment="Left" Margin="457,125,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsReadOnlyCaretVisible="True" Grid.Row="2"/>
         <ListBox x:Name="listBoxA" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="337,61,358,10" Grid.RowSpan="3"/>
         <ListBox x:Name="listBoxB" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="596,61,87,10" Grid.RowSpan="3"/>
