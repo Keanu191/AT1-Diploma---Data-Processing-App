@@ -202,18 +202,13 @@ namespace AT1Dip
                 {
                     if (list.ElementAt(j - 1) > list.ElementAt(j))
                     {
-                        // swap code
-                        /*
-                         * I made the placeholder variables because when i wanted to do list.ElementAt(j - 1) for instance
-                         * I would get compiler error CS0131.
-                         * Janky logic i know :(
+                        /* swap logic
+                         * current.Previous.Value essentially means list.ElementAt(i) or list.ElementAt(j - 1) 
                          */
                       LinkedListNode<double> current = list.Find(list.ElementAt(j));
-                      var temp = list.ElementAt(j - 1);
-                      var placeHolder1 = list.ElementAt(j);
-                      var placeHolder2 = list.ElementAt(j - 1);
-                      placeHolder2 = list.ElementAt(j);
-                      placeHolder1 = temp;
+                      var temp = list.ElementAt(i);
+                      current.Previous.Value = list.ElementAt(j); 
+                      current.Value = temp;
                     }
                 }
             }
@@ -251,5 +246,57 @@ namespace AT1Dip
             InsertionSort(list: sensorA);
             DisplayListBoxData(listBoxIdentifier: sensorA, listBox: listBoxA); // call Display List Box Data method
         }
+
+        /*
+         * 4.9
+         * Create a method called “BinarySearchIterative” which has the following four parameters: LinkedList, SearchValue, Minimum and Maximum.
+         * This method will return an integer of the linkedlist element from a successful search or the nearest neighbour value.
+         * The calling code argument is the linkedlist name, search value, minimum list size and the number of nodes in the list. 
+         * The method code must follow the pseudo code supplied below in the Appendix. 
+         */
+        private void BinarySearchIterative(LinkedList<double> searchList, int searchValue, int minimum, int maximum)
+        {
+
+            while (minimum <= maximum - 1) {
+                int middle = (minimum + maximum) / 2;
+
+                if (searchValue == searchList.ElementAt(middle))
+                {
+                    ++middle;
+                }
+                else if (searchValue < searchList.ElementAt(middle)) {
+                    maximum = middle - 1;
+                }
+                else
+                {
+                    minimum = middle + 1;
+                }
+            }
+            return;
+            //return minimum - 1;this dosen't work atm
+
+            /*
+             *  while (minimum <= maximum - 1) 
+
+                integer middle = minimum + maximum / 2 
+
+                if (search value = list element(middle)) 
+
+                return ++middle 
+
+                else if (search value < list element(middle)) 
+
+                maximum => middle - 1 
+
+                else 
+
+                minimum => middle + 1 
+
+                END while 
+
+                return minimum 
+             */
+        }
+
     }
 }
