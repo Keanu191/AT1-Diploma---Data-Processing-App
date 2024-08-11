@@ -298,5 +298,51 @@ namespace AT1Dip
              */
         }
 
+        /*
+         * 4.10 Create a method called “BinarySearchRecursive” which has the following four parameters: LinkedList, SearchValue, Minimum and Maximum.
+         * This method will return an integer of the linkedlist element from a successful search or the nearest neighbour value. The calling code argument is the linkedlist name, search value, minimum list size and the number of nodes in the list.
+         * The method code must follow the pseudo code supplied below in the Appendix. 
+         */
+
+        private void BinarySearchRecursive(LinkedList<double> searchList, int searchValue, int minimum, int maximum)
+        {
+            if (minimum <= maximum - 1)
+            {
+                int middle = (minimum + maximum) / 2;
+
+                if (searchValue == searchList.ElementAt(middle))
+                {
+                    return middle;
+                } else if (searchValue < searchList.ElementAt(middle)) {
+                    return BinarySearchRecursive(searchList, searchValue, minimum, middle - 1);
+                } else
+                {
+                    return BinarySearchRecursive(searchList, searchValue, middle + 1, maximum);
+                }
+            }
+            return;
+            //return minimum;
+            /*
+             * if (minimum <= maximum - 1) 
+
+                integer middle = minimum + maximum / 2 
+
+                if (search value = list element(middle)) 
+
+                return middle 
+
+                else if (search value < list element(middle)) 
+
+                return binarySearchRecursive(list, search value, minimum, middle - 1) 
+
+                else 
+
+                return binarySearchRecursive(list, search value, middle + 1, maximum) 
+
+                END if 
+
+                return minimum 
+             */
+        }
     }
 }
