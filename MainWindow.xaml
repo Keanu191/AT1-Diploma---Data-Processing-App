@@ -73,7 +73,7 @@
         <TextBox HorizontalAlignment="Left" Margin="460,112,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Label Content="Inseration Sort
                " HorizontalAlignment="Left" Margin="197,74,0,0" VerticalAlignment="Top" Grid.Row="2"/>
-        <Button Content="Sort" HorizontalAlignment="Left" Margin="198,100,0,0" VerticalAlignment="Top" Width="79" Grid.Row="2"/>
+        <Button x:Name="btnInserationSort1" Content="Sort" HorizontalAlignment="Left" Margin="198,100,0,0" VerticalAlignment="Top" Width="79" Grid.Row="2"/>
         <TextBox HorizontalAlignment="Left" Margin="198,125,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsReadOnlyCaretVisible="True" Grid.Row="2"/>
         <Label Content="Binary Search Recursive" HorizontalAlignment="Left" Margin="457,148,0,0" VerticalAlignment="Top"/>
         <Button Content="Search" HorizontalAlignment="Left" Margin="460,174,0,0" VerticalAlignment="Top" Width="64"/>

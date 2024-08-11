@@ -203,10 +203,17 @@ namespace AT1Dip
                     if (list.ElementAt(j - 1) > list.ElementAt(j))
                     {
                         // swap code
+                        /*
+                         * I made the placeholder variables because when i wanted to do list.ElementAt(j - 1) for instance
+                         * I would get compiler error CS0131.
+                         * Janky logic i know :(
+                         */
                       LinkedListNode<double> current = list.Find(list.ElementAt(j));
-                      var temp = list.Find(list.ElementAt(j));
-                      current.Value = list.ElementAt(j);
-                      current.Value = temp;
+                      var temp = list.ElementAt(j - 1);
+                      var placeHolder1 = list.ElementAt(j);
+                      var placeHolder2 = list.ElementAt(j - 1);
+                      placeHolder2 = list.ElementAt(j);
+                      placeHolder1 = temp;
                     }
                 }
             }
