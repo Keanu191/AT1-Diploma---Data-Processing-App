@@ -13,6 +13,7 @@ using System.IO;
 using Galileo6; // import the galileo library (4.2)
 using System.Runtime.InteropServices;
 using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
 
 namespace AT1Dip
 {
@@ -146,40 +147,6 @@ namespace AT1Dip
                 currentI.Value = temp;
             }
             return true;
-
-            /*
-             * integer min => 0 
-
-               integer max => numberOfNodes(list) 
-
-               for ( i = 0 to max - 1 ) 
-
-               min => i 
-
-               for ( j = i + 1 to max ) 
-
-               if (list element(j) < list element(min)) 
-
-               min => j 
-
-               END for 
-
-               // Supplied C# code 
-
-               LinkedListNode<double> currentMin = list.Find(list.ElementAt(min)) 
-
-               LinkedListNode<double> currentI = list.Find(list.ElementAt(i)) 
-
-               // End of supplied C# code 
-
-               var temp = currentMin.Value 
-
-               currentMin.Value = currentI.Value 
-
-               currentI.Value = temp 
-
-               END for 
-             */
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -198,7 +165,7 @@ namespace AT1Dip
             int max = NumberOfNodes(list);
             for (int i = 0; i < max -1; i++)
             {
-                for (int j = i + 1; j < max; j--)
+                for (int j = i + 1; j > 0; j--)
                 {
                     if (list.ElementAt(j - 1) > list.ElementAt(j))
                     {
@@ -213,32 +180,6 @@ namespace AT1Dip
                 }
             }
             return true; // return type boolean
-
-            /*
-             * integer max = numberOfNodes(list) 
-
-                for ( i = 0 to max – 1 ) 
-
-                for ( j = i + 1 to j > 0, j-- ) 
-
-                if (list element(j - 1) > list element(j)) 
-
-                // Supplied C# code 
-
-                LinkedListNode<double> current = list.Find(list.ElementAt(j)) 
-
-                // End of supplied C# code 
-
-                // Add Swap code here by swapping 
-
-                // previous value with current value. 
-
-                END if 
-
-                END for 
-
-                END for 
-             */
         }
 
         private void btnInserationSort_Click(object sender, RoutedEventArgs e)
@@ -254,7 +195,7 @@ namespace AT1Dip
          * The calling code argument is the linkedlist name, search value, minimum list size and the number of nodes in the list. 
          * The method code must follow the pseudo code supplied below in the Appendix. 
          */
-        private void BinarySearchIterative(LinkedList<double> searchList, int searchValue, int minimum, int maximum)
+        private static double BinarySearchIterative(LinkedList<double> searchList, int searchValue, int minimum, int maximum)
         {
 
             while (minimum <= maximum - 1) {
@@ -262,7 +203,7 @@ namespace AT1Dip
 
                 if (searchValue == searchList.ElementAt(middle))
                 {
-                    ++middle;
+                    return ++middle;
                 }
                 else if (searchValue < searchList.ElementAt(middle)) {
                     maximum = middle - 1;
@@ -272,30 +213,7 @@ namespace AT1Dip
                     minimum = middle + 1;
                 }
             }
-            return;
-            //return minimum - 1;this dosen't work atm
-
-            /*
-             *  while (minimum <= maximum - 1) 
-
-                integer middle = minimum + maximum / 2 
-
-                if (search value = list element(middle)) 
-
-                return ++middle 
-
-                else if (search value < list element(middle)) 
-
-                maximum => middle - 1 
-
-                else 
-
-                minimum => middle + 1 
-
-                END while 
-
-                return minimum 
-             */
+            return minimum - 1;
         }
 
         /*
@@ -304,7 +222,7 @@ namespace AT1Dip
          * The method code must follow the pseudo code supplied below in the Appendix. 
          */
 
-        private void BinarySearchRecursive(LinkedList<double> searchList, int searchValue, int minimum, int maximum)
+        private static double BinarySearchRecursive(LinkedList<double> searchList, int searchValue, int minimum, int maximum)
         {
             if (minimum <= maximum - 1)
             {
@@ -312,7 +230,7 @@ namespace AT1Dip
 
                 if (searchValue == searchList.ElementAt(middle))
                 {
-                    return middle;
+                    return minimum;
                 } else if (searchValue < searchList.ElementAt(middle)) {
                     return BinarySearchRecursive(searchList, searchValue, minimum, middle - 1);
                 } else
@@ -320,29 +238,71 @@ namespace AT1Dip
                     return BinarySearchRecursive(searchList, searchValue, middle + 1, maximum);
                 }
             }
-            return;
-            //return minimum;
-            /*
-             * if (minimum <= maximum - 1) 
-
-                integer middle = minimum + maximum / 2 
-
-                if (search value = list element(middle)) 
-
-                return middle 
-
-                else if (search value < list element(middle)) 
-
-                return binarySearchRecursive(list, search value, minimum, middle - 1) 
-
-                else 
-
-                return binarySearchRecursive(list, search value, middle + 1, maximum) 
-
-                END if 
-
-                return minimum 
-             */
+            return minimum;
         }
+
+        #region 4.11
+
+        private void btnBSIA_Click(object sender, RoutedEventArgs e, bool sorted)
+        {
+            // check if an integer is typed in to the textbox or not
+            int parsedValue;
+            if (!int.TryParse(txtBoxBSIA.Text, out parsedValue))
+            {
+                MessageBox.Show("ERROR: Only enter numbers into this textbox!");
+                return;
+            }
+
+            static bool IsOrdered<T>(LinkedList<double> listBoxA, IComparer<T>? comparer = default)
+            {
+                if (listBoxA.Count <= 1)
+                    return true;
+
+                comparer ??= Comparer<T>.Default;
+
+                for (var i = 1; i < listBoxA.Count; i++)
+                {
+                    if (comparer.Compare(listBoxA(i - 1), listBoxA(i)) > 0)
+                        return false;
+                }
+
+                return true;
+            }
+        }
+
+        private void btnBSIB_Click(object sender, RoutedEventArgs e)
+        {
+            // check if an integer is typed in to the textbox or not
+            int parsedValue;
+            if (!int.TryParse(txtBoxBSIB.Text, out parsedValue))
+            {
+                MessageBox.Show("ERROR: Only enter numbers into this textbox!");
+                return;
+            }
+        }
+
+        private void btnBSRA_Click(object sender, RoutedEventArgs e)
+        {
+            // check if an integer is typed in to the textbox or not
+            int parsedValue;
+            if (!int.TryParse(txtBoxBSRA.Text, out parsedValue))
+            {
+                MessageBox.Show("ERROR: Only enter numbers into this textbox!");
+                return;
+            }
+        }
+
+        private void btnBSRB_Click(object sender, RoutedEventArgs e)
+        {
+            // check if an integer is typed in to the textbox or not
+            int parsedValue;
+            if (!int.TryParse(txtBoxBSRB.Text, out parsedValue))
+            {
+                MessageBox.Show("ERROR: Only enter numbers into this textbox!");
+                return;
+            }
+        }
+        #endregion
+
     }
 }
