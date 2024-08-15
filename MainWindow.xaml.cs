@@ -14,6 +14,8 @@ using Galileo6; // import the galileo library (4.2)
 using System.Runtime.InteropServices;
 using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
+using System.Diagnostics;
+using System.Buffers;
 
 namespace AT1Dip
 {
@@ -243,7 +245,41 @@ namespace AT1Dip
 
         #region 4.11
 
-        private void btnBSIA_Click(object sender, RoutedEventArgs e, bool sorted)
+        static bool IsOrdered<T>(LinkedList<T> listBox, IComparer<T>? comparer = default)
+        {
+            /*
+             * found this snippet of code from:
+             * https://code-maze.com/csharp-fastest-way-to-check-if-a-list-is-in-order/#:~:text=We%20iterate%20the%20ordered%20enumerable,the%20list%20is%20not%20ordered.
+             */
+
+            // This method involves checking the linked list order using an Enumerator
+            if (listBox.Count <= 1)
+                return true;
+
+            comparer ??= Comparer<T>.Default;
+            var previous = listBox.ElementAt(0); // define previous varaible to be the first element of linked list
+
+            /* create enumerator via a call to GetEnumerator()
+             and since we want to start our comparison at the second element of the linkedlist, we perform an MoveNext() before we iterate our collection with the enumerator
+            */
+            using var enumerator = listBox.GetEnumerator();
+            enumerator.MoveNext();
+            while (enumerator.MoveNext())
+            {
+                // move to the next element in the collection and store it as the current element
+                var current = enumerator.Current;
+                // compare current to the previous to make sre that they are in the proper order
+                if (comparer.Compare(previous, current) > 0)
+                    return false;
+
+                // before beginning the next iteration, set previous to current
+                previous = current;
+            }
+
+            return true;
+        }
+
+        private void btnBSIA_Click(object sender, RoutedEventArgs e)
         {
             // check if an integer is typed in to the textbox or not
             int parsedValue;
@@ -252,40 +288,12 @@ namespace AT1Dip
                 MessageBox.Show("ERROR: Only enter numbers into this textbox!");
                 return;
             }
+            // start the stopwatch before calling the IsOrdered method
+            Stopwatch stopwatch = new Stopwatch(); // create stopwatch object
+            stopwatch.Start(); // start stopwatch
 
-            static bool IsOrdered<T>(LinkedList<T> listBox, IComparer<T>? comparer = default)
-            {
-                /*
-                 * found this snippet of code from:
-                 * https://code-maze.com/csharp-fastest-way-to-check-if-a-list-is-in-order/#:~:text=We%20iterate%20the%20ordered%20enumerable,the%20list%20is%20not%20ordered.
-                 */
-
-                // This method involves checking the linked list order using an Enumerator
-                if (listBox.Count <= 1)
-                    return true;
-
-                comparer ??= Comparer<T>.Default;
-                var previous = listBox.ElementAt(0); // define previous varaible to be the first element of linked list
-
-                /* create enumerator via a call to GetEnumerator()
-                 and since we want to start our comparison at the second element of the linkedlist, we perform an MoveNext() before we iterate our collection with the enumerator
-                */
-                using var enumerator = listBox.GetEnumerator();
-                enumerator.MoveNext();
-                while (enumerator.MoveNext())
-                {
-                    // move to the next element in the collection and store it as the current element
-                    var current = enumerator.Current; 
-                    // compare current to the previous to make sre that they are in the proper order
-                    if (comparer.Compare(previous, current) > 0)
-                        return false;
-
-                    // before beginning the next iteration, set previous to current
-                    previous = current;
-                }
-
-                return true;
-            }
+            IsOrdered(sensorA); // call IsOrdered method with sensorA as the parameter
+            BinarySearchIterative(searchList: sensorA, searchValue: sensorA, minimum: sensorA, maximum: sensorA);
         }
 
         private void btnBSIB_Click(object sender, RoutedEventArgs e)
@@ -297,6 +305,7 @@ namespace AT1Dip
                 MessageBox.Show("ERROR: Only enter numbers into this textbox!");
                 return;
             }
+            IsOrdered(sensorB); // call IsOrdered method with sensorB as the parameter
         }
 
         private void btnBSRA_Click(object sender, RoutedEventArgs e)
@@ -308,6 +317,7 @@ namespace AT1Dip
                 MessageBox.Show("ERROR: Only enter numbers into this textbox!");
                 return;
             }
+            IsOrdered(sensorA); // call IsOrdered method with sensorA as the parameter
         }
 
         private void btnBSRB_Click(object sender, RoutedEventArgs e)
@@ -319,6 +329,7 @@ namespace AT1Dip
                 MessageBox.Show("ERROR: Only enter numbers into this textbox!");
                 return;
             }
+            IsOrdered(sensorB); // call IsOrdered method with sensorB as the parameter
         }
         #endregion
 
