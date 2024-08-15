@@ -253,17 +253,35 @@ namespace AT1Dip
                 return;
             }
 
-            static bool IsOrdered<T>(LinkedList<double> listBoxA, IComparer<T>? comparer = default)
+            static bool IsOrdered<T>(LinkedList<T> listBox, IComparer<T>? comparer = default)
             {
-                if (listBoxA.Count <= 1)
+                /*
+                 * found this snippet of code from:
+                 * https://code-maze.com/csharp-fastest-way-to-check-if-a-list-is-in-order/#:~:text=We%20iterate%20the%20ordered%20enumerable,the%20list%20is%20not%20ordered.
+                 */
+
+                // This method involves checking the linked list order using an Enumerator
+                if (listBox.Count <= 1)
                     return true;
 
                 comparer ??= Comparer<T>.Default;
+                var previous = listBox.ElementAt(0); // define previous varaible to be the first element of linked list
 
-                for (var i = 1; i < listBoxA.Count; i++)
+                /* create enumerator via a call to GetEnumerator()
+                 and since we want to start our comparison at the second element of the linkedlist, we perform an MoveNext() before we iterate our collection with the enumerator
+                */
+                using var enumerator = listBox.GetEnumerator();
+                enumerator.MoveNext();
+                while (enumerator.MoveNext())
                 {
-                    if (comparer.Compare(listBoxA(i - 1), listBoxA(i)) > 0)
+                    // move to the next element in the collection and store it as the current element
+                    var current = enumerator.Current; 
+                    // compare current to the previous to make sre that they are in the proper order
+                    if (comparer.Compare(previous, current) > 0)
                         return false;
+
+                    // before beginning the next iteration, set previous to current
+                    previous = current;
                 }
 
                 return true;
