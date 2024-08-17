@@ -16,6 +16,7 @@ using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
 using System.Diagnostics;
 using System.Buffers;
+using System.Linq; // import linq for 4.11
 
 namespace AT1Dip
 {
@@ -197,7 +198,7 @@ namespace AT1Dip
          * The calling code argument is the linkedlist name, search value, minimum list size and the number of nodes in the list. 
          * The method code must follow the pseudo code supplied below in the Appendix. 
          */
-        private static double BinarySearchIterative(LinkedList<double> searchList, int searchValue, int minimum, int maximum)
+        private static int BinarySearchIterative(LinkedList<double> searchList, int searchValue, int minimum, int maximum)
         {
 
             while (minimum <= maximum - 1) {
@@ -224,7 +225,7 @@ namespace AT1Dip
          * The method code must follow the pseudo code supplied below in the Appendix. 
          */
 
-        private static double BinarySearchRecursive(LinkedList<double> searchList, int searchValue, int minimum, int maximum)
+        private static int BinarySearchRecursive(LinkedList<double> searchList, int searchValue, int minimum, int maximum)
         {
             if (minimum <= maximum - 1)
             {
@@ -293,7 +294,23 @@ namespace AT1Dip
             stopwatch.Start(); // start stopwatch
 
             IsOrdered(sensorA); // call IsOrdered method with sensorA as the parameter
-            BinarySearchIterative(searchList: sensorA, searchValue: sensorA, minimum: sensorA, maximum: sensorA);
+
+            int searchDetail = int.Parse(txtBoxBSIA.Text);
+            /* https://stackoverflow.com/questions/44055511/how-do-i-get-the-average-highest-and-lowest-of-values-from-a-listbox-and-then-d
+             using linq, i used the extension methods to give me the minimum and maximum values of the listbox after it has been populated
+            */
+            // this line will take all the items from sensorA's listbox and cast them to integers then convert them to doubles
+            IEnumerable<int> listBoxDoubleItems = listBoxA.Items.Cast<string>().Select(item => Convert.ToInt32(item)); /* i previously had CS0121 compiler error so to fix this i used a lambda expression called "anonymous function" to specify the string to int conversion
+                                                                                                          * https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions
+                                                                                                          */
+            // now that i have an IEnumerable<int> to work with, i have used the linq extension methods below
+            int highest = listBoxDoubleItems.Max();
+            int lowest = listBoxDoubleItems.Min();
+            BinarySearchIterative(searchList: sensorA, searchValue: searchDetail, minimum: lowest, maximum: highest);
+
+            stopwatch.Stop(); // stop stopwatch
+            double ticks = stopwatch.ElapsedTicks; 
+
         }
 
         private void btnBSIB_Click(object sender, RoutedEventArgs e)

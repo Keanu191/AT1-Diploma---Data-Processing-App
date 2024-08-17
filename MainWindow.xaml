@@ -45,7 +45,7 @@
         <Button x:Name="btnBSRA" Content="Search" HorizontalAlignment="Left" Margin="198,179,0,0" VerticalAlignment="Top" Width="64" Click="btnBSRA_Click"/>
         <TextBox x:Name="txtBoxBSIA" HorizontalAlignment="Left" Margin="198,112,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtBoxBSRA" HorizontalAlignment="Left" Margin="198,202,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Search Target:" HorizontalAlignment="Left" Margin="191,226,0,0" VerticalAlignment="Top" Height="37" Width="88" RenderTransformOrigin="0.5,0.5">
+        <Label Content="Search Target:" HorizontalAlignment="Left" Margin="242,226,0,0" VerticalAlignment="Top" Height="37" Width="88" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
