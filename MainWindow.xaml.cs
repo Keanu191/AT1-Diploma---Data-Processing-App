@@ -18,6 +18,11 @@ using System.Diagnostics;
 using System.Buffers;
 using System.Linq; // import linq for 4.11
 
+/*
+ * SHIT TO FUCKING DO:
+ * Method for 4.3 is absolute crap need to rewrite
+ * 4.11 is waaaay to complex
+ */
 namespace AT1Dip
 {
     /// <summary>
@@ -56,8 +61,8 @@ namespace AT1Dip
 
             for (int i = 0; i < total; i++)
             {
-                sensorA.AddFirst(read.SensorA(double.Parse(mu1.Text), double.Parse(sigma1.Text))); // Convert text to double for sigma and mu
-                sensorB.AddFirst(read.SensorB(double.Parse(mu1.Text), double.Parse(sigma1.Text)));
+                sensorA.AddLast(read.SensorA(double.Parse(mu1.Text), double.Parse(sigma1.Text))); // Convert text to double for sigma and mu
+                sensorB.AddLast(read.SensorB(double.Parse(mu1.Text), double.Parse(sigma1.Text)));
             }
         }
 
@@ -76,7 +81,7 @@ namespace AT1Dip
             {
                 listView1.Items.Add(data);
             }
-
+            
             // display linked list for sensor B
             foreach (double data in sensorB)
             {
@@ -187,8 +192,8 @@ namespace AT1Dip
 
         private void btnInserationSort_Click(object sender, RoutedEventArgs e)
         {
-            InsertionSort(list: sensorA);
-            DisplayListBoxData(listBoxIdentifier: sensorA, listBox: listBoxA); // call Display List Box Data method
+            InsertionSort(list: sensorB);
+            DisplayListBoxData(listBoxIdentifier: sensorB, listBox: listBoxB); // call Display List Box Data method
         }
 
         /*
@@ -284,18 +289,19 @@ namespace AT1Dip
         {
             // check if an integer is typed in to the textbox or not
             int parsedValue;
-            if (!int.TryParse(txtBoxBSIA.Text, out parsedValue))
+            if (!int.TryParse(searchValA.Text, out parsedValue))
             {
                 MessageBox.Show("ERROR: Only enter numbers into this textbox!");
                 return;
             }
+ 
             // start the stopwatch before calling the IsOrdered method
             Stopwatch stopwatch = new Stopwatch(); // create stopwatch object
             stopwatch.Start(); // start stopwatch
 
             IsOrdered(sensorA); // call IsOrdered method with sensorA as the parameter
 
-            int searchDetail = int.Parse(txtBoxBSIA.Text);
+            int searchDetail = int.Parse(searchValA.Text);
             /* https://stackoverflow.com/questions/44055511/how-do-i-get-the-average-highest-and-lowest-of-values-from-a-listbox-and-then-d
              using linq, i used the extension methods to give me the minimum and maximum values of the listbox after it has been populated
             */
@@ -309,8 +315,10 @@ namespace AT1Dip
             BinarySearchIterative(searchList: sensorA, searchValue: searchDetail, minimum: lowest, maximum: highest);
 
             stopwatch.Stop(); // stop stopwatch
-            double ticks = stopwatch.ElapsedTicks; 
 
+            TimeSpan timeTaken = stopwatch.Elapsed;
+            txtBoxBSIA.Text = $"{timeTaken.Milliseconds} MS";
+            DisplayListBoxData(listBoxIdentifier: sensorA, listBox: listBoxA);
         }
 
         private void btnBSIB_Click(object sender, RoutedEventArgs e)
@@ -322,7 +330,22 @@ namespace AT1Dip
                 MessageBox.Show("ERROR: Only enter numbers into this textbox!");
                 return;
             }
+            Stopwatch stopwatch = new Stopwatch(); // create stopwatch object
+            stopwatch.Start(); // start stopwatch
             IsOrdered(sensorB); // call IsOrdered method with sensorB as the parameter
+
+            int searchDetail = int.Parse(searchValB.Text);
+            IEnumerable<int> listBoxDoubleItems = listBoxB.Items.Cast<string>().Select(item => Convert.ToInt32(item));
+
+            int highest = listBoxDoubleItems.Max();
+            int lowest = listBoxDoubleItems.Min();
+            BinarySearchIterative(searchList: sensorB, searchValue: searchDetail, minimum: lowest, maximum: highest);
+
+            stopwatch.Stop(); // stop stopwatch
+
+            TimeSpan timeTaken = stopwatch.Elapsed;
+            txtBoxBSIA.Text = $"{timeTaken.Milliseconds} MS";
+            DisplayListBoxData(listBoxIdentifier: sensorA, listBox: listBoxA);
         }
 
         private void btnBSRA_Click(object sender, RoutedEventArgs e)
@@ -350,5 +373,15 @@ namespace AT1Dip
         }
         #endregion
 
+        private void btnInserationSortA_Click(object sender, RoutedEventArgs e)
+        {
+            InsertionSort(list: sensorA);
+            DisplayListBoxData(listBoxIdentifier: sensorA, listBox: listBoxA); // call Display List Box Data method
+        }
+
+        private void listView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
