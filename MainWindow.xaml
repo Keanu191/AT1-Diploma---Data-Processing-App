@@ -64,7 +64,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="searchValA" HorizontalAlignment="Left" Margin="197,249,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="94" Height="19"/>
+        <TextBox x:Name="searchValA" HorizontalAlignment="Left" Margin="197,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" Height="19"/>
         <Label Content="Selection Sort                " HorizontalAlignment="Left" Margin="191,273,0,0" VerticalAlignment="Top" Grid.RowSpan="3"/>
         <Button Content="Sort" HorizontalAlignment="Left" Margin="198,17,0,0" VerticalAlignment="Top" Width="79" Grid.Row="2"/>
         <TextBox HorizontalAlignment="Left" Margin="198,42,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsReadOnlyCaretVisible="True" Grid.Row="2"/>
@@ -88,7 +88,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <TextBox x:Name="searchValB" HorizontalAlignment="Left" Margin="539,234,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="52"/>
+        <TextBox x:Name="searchValB" HorizontalAlignment="Left" Margin="473,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83"/>
         <Label Content="Selection Sort                " HorizontalAlignment="Left" Margin="449,265,0,0" VerticalAlignment="Top" Grid.RowSpan="3"/>
         <Button x:Name="btnSelectionSort" Content="Sort" HorizontalAlignment="Left" Margin="457,20,0,0" VerticalAlignment="Top" Width="79" Grid.Row="2" Click="Button_Click"/>
         <TextBox HorizontalAlignment="Left" Margin="457,51,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsReadOnlyCaretVisible="True" Grid.Row="2"/>
