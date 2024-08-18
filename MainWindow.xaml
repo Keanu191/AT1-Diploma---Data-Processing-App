@@ -34,8 +34,8 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <xctk:IntegerUpDown x:Name="sigma1" Margin="22,41,719,189" AutomationProperties.Name="sigma" Maximum="100" Increment="10" Minimum="10" />
-        <xctk:IntegerUpDown x:Name="mu1" Margin="114,41,627,189" AutomationProperties.Name="mu" Maximum="100" Increment="10" Minimum="10" />
+        <xctk:IntegerUpDown x:Name="sigma1" Margin="22,41,719,189" AutomationProperties.Name="sigma" Maximum="20" Increment="5" Minimum="10" />
+        <xctk:IntegerUpDown x:Name="mu1" Margin="114,41,627,189" AutomationProperties.Name="mu" Text="50" Maximum="75" Increment="10" Minimum="35" />
         <Label Content="Sigma" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Mu" HorizontalAlignment="Left" Margin="114,10,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnLoadAB" Content="Load Sensor Data" HorizontalAlignment="Left" Margin="15,99,0,0" VerticalAlignment="Top" Height="25" Width="156" Click="btnLoadAB_Click"/>

@@ -18,11 +18,6 @@ using System.Diagnostics;
 using System.Buffers;
 using System.Linq; // import linq for 4.11
 
-/*
- * SHIT TO FUCKING DO:
- * Method for 4.3 is absolute crap need to rewrite
- * 4.11 is waaaay to complex
- */
 namespace AT1Dip
 {
     /// <summary>
