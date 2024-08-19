@@ -380,5 +380,27 @@ namespace AT1Dip
             {
 
             }
+
+        private void searchValA_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // 4.14 check if an integer is typed in to the textbox or not
+            int parsedValue;
+            if (!int.TryParse(searchValA.Text, out parsedValue))
+            {
+                MessageBox.Show("ERROR: Only enter numbers into this textbox!");
+                return;
+            }
         }
+
+        private void searchValB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // 4.14 check if an integer is typed in to the textbox or not
+            int parsedValue;
+            if (!int.TryParse(searchValA.Text, out parsedValue))
+            {
+                MessageBox.Show("ERROR: Only enter numbers into this textbox!");
+                return;
+            }
+        }
+    }
     }
