@@ -58,8 +58,8 @@
         <ListView x:Name="listView1" Margin="15,127,627,0" Grid.RowSpan="3" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="listView1_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Sensor A" DisplayMemberBinding="{Binding sigma}" Width="70" />
-                    <GridViewColumn Header="Sensor B" DisplayMemberBinding="{Binding mu}" Width="80" />
+                    <GridViewColumn Header="Sensor A" DisplayMemberBinding="{Binding sigma}" Width="150" />
+                    <GridViewColumn Header="Sensor B" DisplayMemberBinding="{Binding mu}" Width="150"/>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
