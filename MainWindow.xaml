@@ -43,7 +43,7 @@
         <Button x:Name="btnBSIA" Content="Search" HorizontalAlignment="Left" Margin="198,84,0,0" VerticalAlignment="Top" Width="64" Click="btnBSIA_Click"/>
         <Label Content="Binary Search Recursive" HorizontalAlignment="Left" Margin="191,148,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnBSRA" Content="Search" HorizontalAlignment="Left" Margin="198,179,0,0" VerticalAlignment="Top" Width="64" Click="btnBSRA_Click"/>
-        <TextBox x:Name="txtBoxBSIA" HorizontalAlignment="Left" Margin="198,112,0,0" TextWrapping="Wrap" Text="ticks" VerticalAlignment="Top" Width="120" IsReadOnlyCaretVisible="True"/>
+        <TextBox x:Name="txtBoxBSIA" HorizontalAlignment="Left" Margin="198,112,0,0" TextWrapping="Wrap" Text="ticks" VerticalAlignment="Top" Width="120" IsReadOnlyCaretVisible="True" IsReadOnly="True"/>
         <TextBox x:Name="txtBoxBSRA" HorizontalAlignment="Left" Margin="198,202,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Label Content="Search Value:" HorizontalAlignment="Left" Margin="174,226,0,0" VerticalAlignment="Top" Height="36" Width="100" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
@@ -55,7 +55,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <ListView x:Name="listView1" Margin="15,127,627,0" Grid.RowSpan="3" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="listView1_SelectionChanged">
+        <ListView x:Name="listView1" Margin="15,127,627,0" Grid.RowSpan="3" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Sensor A" DisplayMemberBinding="{Binding sigma}" Width="150" />
@@ -64,13 +64,13 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="searchValA" HorizontalAlignment="Left" Margin="197,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" Height="19" TextChanged="searchValA_TextChanged"/>
+        <TextBox x:Name="searchValA" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="197,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" Height="19"/>
         <Label Content="Selection Sort                " HorizontalAlignment="Left" Margin="191,273,0,0" VerticalAlignment="Top" Grid.RowSpan="3"/>
         <Button x:Name="btnSelectionSortA" Content="Sort" HorizontalAlignment="Left" Margin="198,17,0,0" VerticalAlignment="Top" Width="79" Grid.Row="2" Click="btnSelectionSortA_Click"/>
         <TextBox HorizontalAlignment="Left" Margin="198,42,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsReadOnlyCaretVisible="True" Grid.Row="2"/>
         <Label Content="Binary Search Iterative" HorizontalAlignment="Left" Margin="460,57,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnBSIB" Content="Search" HorizontalAlignment="Left" Margin="460,84,0,0" VerticalAlignment="Top" Width="64" Click="btnBSIB_Click"/>
-        <TextBox x:Name="txtBoxBSIB" HorizontalAlignment="Left" Margin="460,112,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtBoxBSIB" HorizontalAlignment="Left" Margin="460,112,0,0" TextWrapping="Wrap" Text="ticks" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
         <Label Content="Inseration Sort
                " HorizontalAlignment="Left" Margin="197,74,0,0" VerticalAlignment="Top" Grid.Row="2"/>
         <Button x:Name="btnInserationSortA" Content="Sort" HorizontalAlignment="Left" Margin="198,100,0,0" VerticalAlignment="Top" Width="79" Grid.Row="2" Click="btnInserationSortA_Click"/>
@@ -88,7 +88,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <TextBox x:Name="searchValB" HorizontalAlignment="Left" Margin="473,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" TextChanged="searchValB_TextChanged"/>
+        <TextBox x:Name="searchValB" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="473,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83"/>
         <Label Content="Selection Sort                " HorizontalAlignment="Left" Margin="449,265,0,0" VerticalAlignment="Top" Grid.RowSpan="3"/>
         <Button x:Name="btnSelectionSortB" Content="Sort" HorizontalAlignment="Left" Margin="457,20,0,0" VerticalAlignment="Top" Width="79" Grid.Row="2" Click="Button_Click"/>
         <TextBox HorizontalAlignment="Left" Margin="457,51,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsReadOnlyCaretVisible="True" Grid.Row="2"/>
