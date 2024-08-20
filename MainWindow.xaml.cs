@@ -95,6 +95,7 @@ namespace AT1Dip
                 LoadData(); // call load data method
                 ShowAllSensorData(); // call show all sensor method
                 DisplayListBoxData(listBoxIdentifier: sensorA, listBox: listBoxA); // call Display List Box Data method
+                DisplayListBoxData(listBoxIdentifier: sensorB, listBox: listBoxB);
             }
 
 
@@ -114,13 +115,11 @@ namespace AT1Dip
              */
             private void DisplayListBoxData(LinkedList<double> listBoxIdentifier, ListBox listBox)
             {
-                listBoxA.Items.Clear();
-                listBoxB.Items.Clear();
-
+                listBox.Items.Clear(); // clear both listboxes
+              
                 foreach (double data in listBoxIdentifier)
                 {
-                    listBoxA.Items.Add(data);
-                    listBoxB.Items.Add(data);
+                    listBox.Items.Add(data);
                 }
             }
 
@@ -156,8 +155,8 @@ namespace AT1Dip
 
             private void Button_Click(object sender, RoutedEventArgs e)
             {
-                SelectionSort(list: sensorA); // call selectionSort method
-                DisplayListBoxData(listBoxIdentifier: sensorA, listBox: listBoxA); // call Display List Box Data method
+                SelectionSort(list: sensorB); // call selectionSort method
+                DisplayListBoxData(listBoxIdentifier: sensorB, listBox: listBoxB); // call Display List Box Data method
             }
 
             /*
@@ -175,10 +174,10 @@ namespace AT1Dip
                         if (list.ElementAt(j - 1) > list.ElementAt(j))
                         {
                             /* swap logic
-                             * current.Previous.Value essentially means list.ElementAt(i) or list.ElementAt(j - 1) 
+                             *  
                              */
                             LinkedListNode<double> current = list.Find(list.ElementAt(j));
-                            var temp = list.ElementAt(i);
+                            var temp = list.ElementAt(j - 1);
                             current.Previous.Value = list.ElementAt(j);
                             current.Value = temp;
                         }
@@ -299,16 +298,9 @@ namespace AT1Dip
                 IsOrdered(sensorA); // call IsOrdered method with sensorA as the parameter
 
                 int searchDetail = int.Parse(searchValA.Text);
-                /* https://stackoverflow.com/questions/44055511/how-do-i-get-the-average-highest-and-lowest-of-values-from-a-listbox-and-then-d
-                 using linq, i used the extension methods to give me the minimum and maximum values of the listbox after it has been populated
-                */
-                // this line will take all the items from sensorA's listbox and cast them to integers then convert them to doubles
-                IEnumerable<int> listBoxDoubleItems = listBoxA.Items.Cast<string>().Select(item => Convert.ToInt32(item)); /* i previously had CS0121 compiler error so to fix this i used a lambda expression called "anonymous function" to specify the string to int conversion
-                                                                                                          * https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions
-                                                                                                          */
-                // now that i have an IEnumerable<int> to work with, i have used the linq extension methods below
-                int highest = listBoxDoubleItems.Max();
-                int lowest = listBoxDoubleItems.Min();
+                
+                int highest = sensorA.Count;
+                int lowest = 0;
                 BinarySearchIterative(searchList: sensorA, searchValue: searchDetail, minimum: lowest, maximum: highest);
 
                 stopwatch.Stop(); // stop stopwatch
@@ -401,6 +393,12 @@ namespace AT1Dip
                 MessageBox.Show("ERROR: Only enter numbers into this textbox!");
                 return;
             }
+        }
+
+        private void btnSelectionSortA_Click(object sender, RoutedEventArgs e)
+        {
+            SelectionSort(list: sensorA);
+            DisplayListBoxData(listBoxIdentifier: sensorA, listBox: listBoxA); // call Display List Box Data method
         }
     }
     }
